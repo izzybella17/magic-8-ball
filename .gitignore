@@ -107,4 +107,4 @@ venv.bak/
 *.swp
 
 #ignoring the .cfg files cause those contain app secrets
-*.cfg
+app_data.cfg
