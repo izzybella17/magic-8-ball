@@ -16,6 +16,7 @@ import pprint
 import urllib
 import requests
 import ConfigParser
+import random
 import os
 from urllib2 import HTTPError
 from urllib import quote
@@ -119,35 +120,18 @@ def query_api(term, location):
     if not businesses:
         print (u'No businesses for {0} in {1} found.'.format(term, location))
         return
-    
+   
+    # FOR DEBUGGING ONLY!!
     for business in businesses:
         print (u'{0} - {1} - Rating: {2}').format(
                 business['name'],
                 business['price'],
                 business['rating'])
+    # FOR DEBUGGING ONLY!!
 
     return businesses
 
-#    business_id = businesses[0]['id']
-#
-#    print(u'{0} businesses found, querying business info ' \
-#            'for the top result "{1}" ...'.format(
-#                len(businesses), business_id))
-#    response = get_business(API_KEY, business_id)
-#
-#    print(u'Result for business "{0}" found:'.format(business_id))
-#    pprint.pprint(businesses, indent=2)
-
-
-def main():
-    #If the program works properly, you should see a business in Fullerton California
-    query_api(DEFAULT_TERM, DEFAULT_LOCATION)
-
-@app.route("/")
-def hello():
+def getRandomBusiness(term, location):
+    index = random.randrange(SEARCH_LIMIT - 1)
     businesses = query_api(DEFAULT_TERM, DEFAULT_LOCATION)
-    return businesses[0]['name']
-    
-
-if __name__ == '__main__':
-    main()
+    return businesses[index]
