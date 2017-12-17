@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+#vim .swp files
+*.swp
+
+#ignoring the .cfg files cause those contain app secrets
+app_data.cfg
